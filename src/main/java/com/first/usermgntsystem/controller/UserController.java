@@ -5,6 +5,7 @@ import com.first.usermgntsystem.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 
 
 @RestController
@@ -17,5 +18,9 @@ public class UserController {
     @PostMapping("/save")
     public UserModel saveUser(@RequestBody UserModel userModel){
         return userService.saveUser(userModel);
+    }
+    @GetMapping("/users")
+    public List<UserModel> getAllUsers(){
+        return userService.getAllUsers();
     }
 }

@@ -1,7 +1,9 @@
 package com.first.usermgntsystem.service;
 
-import com.first.usermgntsystem.entity.User;
+import com.first.usermgntsystem.model.UserModel;
+
+
 
 public interface UserService {
-    User saveUser(User user);
+    UserModel saveUser(UserModel userModel);
 }

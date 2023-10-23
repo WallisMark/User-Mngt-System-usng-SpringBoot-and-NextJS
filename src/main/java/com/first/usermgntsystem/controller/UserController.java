@@ -7,7 +7,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -27,7 +29,7 @@ public class UserController {
     }
 
     @GetMapping("/users/{id}")
-    public ResponseEntity<UserModel> getUserById(@PathVariable("id") long id) {
+    public ResponseEntity<UserModel> getUserById(@PathVariable("id") Long id) {
         UserModel userModel = userService.getUserById(id);
 
         if (userModel != null) {
@@ -37,6 +39,22 @@ public class UserController {
         }
     }
 
+    @DeleteMapping("/users/{id}")
+
+    public ResponseEntity<Map<String,Boolean>> deleteUser (@PathVariable("id") Long id){
+        boolean deleted = false;
+        deleted = userService.deleteUser(id);
+        Map<String,Boolean> response = new HashMap<>();
+        response.put("delete",deleted);
+        return ResponseEntity.ok(response);
+    }
+
+    @PutMapping("/users/{id}")
+
+    public ResponseEntity<UserModel> updateUser (@PathVariable("id") Long id, @RequestBody UserModel userModel){
+        userModel = userService.updateUser(id,userModel);
+        return ResponseEntity.ok(userModel);
+    }
 }
 
 

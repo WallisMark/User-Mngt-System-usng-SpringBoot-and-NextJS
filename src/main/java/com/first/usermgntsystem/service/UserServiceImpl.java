@@ -46,4 +46,21 @@ public class UserServiceImpl implements UserService{
         BeanUtils.copyProperties(user,userModel);
         return userModel;
     }
+
+    @Override
+    public boolean deleteUser(Long id) {
+        User user = userRepository.findById(id).get();
+        userRepository.delete(user);
+        return true;
+    }
+
+    @Override
+    public UserModel updateUser(Long id, UserModel userModel) {
+        User user = userRepository.findById(id).get();
+        user.setUserName(userModel.getUserName());
+        user.setUserLastname(userModel.getUserLastname());
+        user.setUserEmail(userModel.getUserEmail());
+        userRepository.save(user);
+        return userModel;
+    }
 }

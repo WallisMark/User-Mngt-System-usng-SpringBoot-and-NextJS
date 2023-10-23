@@ -9,4 +9,8 @@ public interface UserService {
     List<UserModel> getAllUsers();
 
     UserModel getUserById(long id);
+
+    boolean deleteUser(Long id);
+
+    UserModel updateUser(Long id, UserModel userModel);
 }

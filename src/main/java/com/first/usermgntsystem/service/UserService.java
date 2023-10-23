@@ -7,4 +7,6 @@ public interface UserService {
     UserModel saveUser(UserModel userModel);
 
     List<UserModel> getAllUsers();
+
+    UserModel getUserById(long id);
 }

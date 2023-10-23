@@ -38,4 +38,12 @@ public class UserServiceImpl implements UserService{
 
         return userModels;
     }
+
+    @Override
+    public UserModel getUserById(long id) {
+        User user = userRepository.findById(id).get();
+        UserModel userModel = new UserModel();
+        BeanUtils.copyProperties(user,userModel);
+        return userModel;
+    }
 }
